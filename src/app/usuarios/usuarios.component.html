@@ -1,0 +1,51 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class=" mb-5">
+      <div class="card shadow border-0 rounded-5">
+        <div class="card-header bg-primary text-white text-center py-4">
+          <h4 class="mb-0">Mi Perfil</h4>
+        </div>
+        <div class="card-body px-4 py-5">
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+            <!-- Nombre -->
+            <div class="mb-4">
+              <label for="nombre" class="form-label">Nombre Completo</label>
+              <input id="nombre" type="text" formControlName="nombre" [(ngModel)]="nombre" class="form-control form-control-lg" placeholder="Ingrese su nombre" />
+            </div>
+
+            <!-- Teléfono -->
+            <div class="mb-4">
+              <label for="telefono" class="form-label">Teléfono</label>
+              <input id="telefono" type="text" formControlName="telefono" [(ngModel)]="telefono" class="form-control form-control-lg" placeholder="Ingrese su teléfono" />
+            </div>
+
+            <!-- Dirección -->
+            <div class="mb-4">
+              <label for="direccion" class="form-label">Dirección</label>
+              <input id="direccion" type="text" formControlName="direccion" [(ngModel)]="direccion" class="form-control form-control-lg" placeholder="Ingrese su dirección" />
+            </div>
+
+            <!-- Correo -->
+            <div class="mb-4">
+              <label for="email" class="form-label">Correo Electrónico</label>
+              <input id="email" type="email" formControlName="email" [(ngModel)]="email" class="form-control form-control-lg" placeholder="Ingrese su correo electrónico" />
+            </div>
+
+            <!-- Contraseña -->
+            <div class="mb-4">
+              <label for="password" class="form-label">Contraseña</label>
+              <input id="password" type="password" formControlName="password" [(ngModel)]="password" class="form-control form-control-lg" placeholder="Dejar en blanco para mantener la contraseña actual" />
+            </div>
+
+            <!-- Botón -->
+            <div class="text-center mt-4">
+              <button class="btn btn-primary w-100 py-3 rounded-pill" type="submit">Actualizar Perfil</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

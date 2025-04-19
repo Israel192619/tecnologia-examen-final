@@ -1,0 +1,49 @@
+<form [formGroup]="solicitudForm" (ngSubmit)="enviarSolicitud()" class="p-4 border rounded shadow-sm bg-light">
+  <h4 class="mb-3">Formulario de Solicitud de Adopción</h4>
+
+  <div class="mb-3">
+    <label for="nombre" class="form-label">Nombre completo</label>
+    <input type="text" class="form-control" id="nombre" [(ngModel)]="nombre" formControlName="nombre" readonly>
+    <div *ngIf="submitted && solicitudForm.get('nombre')?.invalid" class="text-danger">
+      El nombre es requerido.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Correo electrónico</label>
+    <input type="email" class="form-control" id="email" [(ngModel)]="email" formControlName="email" readonly>
+    <div *ngIf="submitted && solicitudForm.get('email')?.invalid" class="text-danger">
+      Ingrese un correo válido.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="telefono" class="form-label">Teléfono</label>
+    <input type="text" class="form-control" id="telefono" [(ngModel)]="telefono" formControlName="telefono" readonly>
+  </div>
+
+  <div class="mb-3">
+    <label for="direccion" class="form-label">Dirección</label>
+    <textarea class="form-control" id="direccion" rows="2" [(ngModel)]="direccion" formControlName="direccion" readonly></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label for="motivo" class="form-label">¿Por qué desea adoptar?</label>
+    <textarea class="form-control" id="motivo" rows="3" formControlName="motivo"></textarea>
+  </div>
+
+  <div class="mb-3" hidden>
+    <label for="animalID" class="form-label">ID del animal</label>
+    <input type="number" class="form-control" id="animalID" [(ngModel)]="animalID" formControlName="animalID">
+  </div>
+  <div class="mb-3" hidden>
+    <label for="usuarioID" class="form-label">ID del Usuario</label>
+    <input type="number" class="form-control" id="usuarioID" [(ngModel)]="usuarioID" formControlName="usuarioID">
+  </div>
+  <div class="mb-3" >
+    <label for="tipo" class="form-label">Tipo</label>
+    <input type="text" class="form-control" id="tipo" [(ngModel)]="tipo" formControlName="tipo" readonly>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+</form>

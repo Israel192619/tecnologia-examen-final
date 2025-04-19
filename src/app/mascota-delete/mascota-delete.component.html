@@ -1,0 +1,17 @@
+<!-- Mostrar la confirmación de eliminación -->
+<div class="alert alert-warning d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mt-3 p-4 border-0 shadow-sm">
+  <div>
+    <p class="mb-0">
+      ¿Estás seguro de que deseas eliminar a
+      <strong class="text-danger">{{ nombreElemento }}</strong>?
+    </p>
+  </div>
+  <div class="d-flex gap-2">
+    <button class="btn btn-outline-secondary btn-sm" (click)="cancelar()">
+      Cancelar
+    </button>
+    <button class="btn btn-danger btn-sm" (click)="eliminar()">
+      Confirmar
+    </button>
+  </div>
+</div>

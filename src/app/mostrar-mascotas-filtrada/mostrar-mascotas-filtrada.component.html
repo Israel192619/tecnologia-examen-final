@@ -1,0 +1,19 @@
+<!-- Mostrar mensaje si no hay mascotas -->
+<div *ngIf="mensajeSinMascotas" class="alert alert-warning text-center fw-semibold">
+  Aún no hay mascotas en esta categoría.
+</div>
+<div class="d-flex flex-wrap justify-content-start">
+  <div class="card border-0 text-center m-2"
+       style="width: 120px;"
+       *ngFor="let mascota of listaMascotasFiltradas">
+
+    <button class="btn p-0 border-0 bg-transparent" (click)="mostrarMascota(mascota)">
+      <div class="rounded-circle overflow-hidden shadow"
+           style="width: 100px; height: 100px; background-size: cover; background-position: center;"
+           [ngStyle]="{ 'background-image': 'url(' + mascota.img + ')' }">
+      </div>
+    </button>
+
+    <span class="mt-2 d-block fw-semibold text-truncate">{{ mascota.nombre }}</span>
+  </div>
+</div>

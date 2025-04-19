@@ -6,12 +6,10 @@ import { Router } from '@angular/router';
 })
 export class SesionService {
 
-  nombreDB = 'adopcionDeMascotas'; // Cambié el nombre de la base de datos
+  /* nombreDB = 'adopcionDeMascotas'; // Cambié el nombre de la base de datos
   nombreStore = 'sesion'; // Puedes mantener este nombre o cambiarlo si lo deseas
 
-  constructor(private router: Router) {
-    this.crearBaseDeDatos();
-  }
+
 
   // 1. Crear la base de datos en IndexedDB
   crearBaseDeDatos() {
@@ -62,26 +60,26 @@ export class SesionService {
         callback(null);
       };
     };
-  }
+  } */
 
   // 4. Cerrar sesión y limpiar sessionStorage e IndexedDB
-  cerrarSesion() {
+  /* cerrarSesion() {
     // Limpiamos sessionStorage
     sessionStorage.removeItem("usuarioLogueado");
-    sessionStorage.removeItem("usuarioId");
+    sessionStorage.removeItem("usuarioId"); */
 
     // Limpiamos IndexedDB
-    const request = indexedDB.open(this.nombreDB, 1);
+    /* const request = indexedDB.open(this.nombreDB, 1);
     request.onsuccess = (event: any) => {
       const db = event.target.result;
       const tx = db.transaction(this.nombreStore, 'readwrite');
       const store = tx.objectStore(this.nombreStore);
       store.delete('usuarioActivo');
-    };
-  }
+    }; */
+  /* } */
 
   // 5. Verificar si el usuario está logueado con sessionStorage
-  estaLogueado(): boolean {
+  /* estaLogueado(): boolean {
     return sessionStorage.getItem("usuarioLogueado") === "true";
-  }
+  } */
 }

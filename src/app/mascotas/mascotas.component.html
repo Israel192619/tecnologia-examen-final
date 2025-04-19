@@ -1,0 +1,69 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Dar Mascota en Adopción</h2>
+  <form [formGroup]="formAdopcion" (ngSubmit)="onSubmit()" novalidate class="row g-4">
+
+    <div class="col-md-6">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="nombre" formControlName="nombre" required>
+    </div>
+
+    <div class="col-md-6">
+      <label for="especie" class="form-label">Especie</label>
+      <select class="form-select" id="especie" formControlName="especie">
+        <option value="">Seleccionar especie</option>
+        <option value="Perro">Perro</option>
+        <option value="Gato">Gato</option>
+        <option value="Otro">Otro</option>
+      </select>
+    </div>
+
+    <div class="col-md-6">
+      <label for="raza" class="form-label">Raza</label>
+      <input type="text" class="form-control" id="raza" formControlName="raza">
+    </div>
+
+    <div class="col-md-6">
+      <label for="edad" class="form-label">Edad (en años)</label>
+      <input type="number" class="form-control" id="edad" formControlName="edad" min="0">
+    </div>
+
+    <div class="col-md-6">
+      <label for="tamano" class="form-label">Tamaño</label>
+      <select class="form-select" id="tamano" formControlName="tamano">
+        <option value="">Seleccionar tamaño</option>
+        <option value="Pequeño">Pequeño</option>
+        <option value="Mediano">Mediano</option>
+        <option value="Grande">Grande</option>
+      </select>
+    </div>
+
+    <div class="col-12">
+      <label for="descripcion" class="form-label">Descripción</label>
+      <textarea class="form-control" id="descripcion" rows="3" formControlName="descripcion"></textarea>
+    </div>
+
+    <div class="col-md-6 d-flex align-items-center gap-3">
+      <label class="btn btn-secondary btn-sm" data-bs-toggle="tooltip" title="Cambiar imagen">
+        <i class="bi bi-pencil-fill me-1"></i> Elegir Imagen
+        <input type="file" id="img" (change)="processAvatar($event)" name="avatar" accept=".png, .jpg, .jpeg" hidden />
+      </label>
+    </div>
+
+    <div class="col-md-6 d-flex justify-content-center align-items-center">
+      <div class="rounded shadow border"
+           [ngStyle]="{
+             'background-image': 'url(' + IMAGEN_PREVISUALIZACION + ')',
+             'background-size': 'cover',
+             'background-position': 'center',
+             'width': '250px',
+             'height': '250px'
+           }">
+      </div>
+    </div>
+
+    <div class="col-12 text-center mt-4">
+      <button type="submit" class="btn btn-primary px-5" [disabled]="formAdopcion.invalid">Enviar</button>
+    </div>
+
+  </form>
+</div>

@@ -18,9 +18,12 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Mascotas</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Sesion</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Solicitudes</a></li>
+          <li *ngIf="isLogueado()" class="nav-item"><a class="nav-link" href="#" (click)="listaMascotas()">Mis Mascotas</a></li>
+          <li *ngIf="!isLogueado()" class="nav-item"><a class="nav-link" href="#" (click)="iniciarSesion()">Sesion</a></li>
+          <li *ngIf="isLogueado()" class="nav-item"><a class="nav-link" href="#" (click)="miPerfil()">Mi perfil</a></li>
+
+          <li *ngIf="isLogueado()" class="nav-item"><a class="nav-link" href="#" (click)="misSolicitudes()">Mis Solicitudes</a></li>
+          <li *ngIf="isLogueado()" class="nav-item btn btn-warning"><a class="nav-link" href="#" (click)="logout()">Salir</a></li>
         </ul>
       </div>
     </div>
@@ -38,8 +41,8 @@
           <img src="https://www.ladridosybigotes.com/content/images/2024/10/2024-08-13-animal-hoarding-disorder.webp" class="img-fluid rounded " style="max-width: 100%; height: 100%;" alt="...">
           <div class="position-absolute top-50 start-50 translate-middle d-flex flex-column align-items-center ms-5">
             <button class="btn btn-warning mb-2 btn-lg" (click)="darAdopcion()">Dar en adopción</button>
-            <button class="btn btn-warning mb-2 btn-lg">Adoptar</button>
-            <button class="btn btn-warning btn-lg ">Realizar donación</button>
+            <button class="btn btn-warning mb-2 btn-lg " (click)="ubicacion()">Ubicacion</button>
+            <button class="btn btn-warning  btn-lg" (click)="adopar()">Quienes somos?</button>
           </div>
         </div>
       </div>
@@ -52,50 +55,36 @@
 
   <!-- Mascotas Destacadas -->
   <section class="container py-5" id="mascotas">
-    <h2 class="text-center mb-4">Mascotas disponibles</h2>
+    <!-- <h2 class="text-center mb-4">Mascotas disponibles</h2> -->
+    <hr>
+    <ng-container *ngFor="let categoria of categorias">
+      <button class="btn btn-warning rounded shadow mx-5 py-3 px-4 fs-5 fw-bold transition-all duration-300 hover:scale-105" (click)="cargarMascotas(categoria)">
+        {{categoria}}
+      </button>
+
+    </ng-container>
+    <hr>
     <div class="row" id="mascotas-lista">
-      <!-- Cards de mascotas aquí -->
+
     </div>
   </section>
+  <section>
+    <div class="contenedor-imagen-servicios">
+      <div class="img-izquierda p-4 pt-5 bg-warning bg-opacity-75 rounded-4 shadow" *ngIf="mascotaSeleccionada">
+        <h4 class="fw-bold text-dark mb-4 text-uppercase">Detalles de la Mascota</h4>
 
-  <!-- Adoptantes -->
-  <section class="container py-5" id="adoptantes">
-    <h2 class="text-center mb-4">Adoptantes registrados</h2>
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th>Preferencia</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody id="tabla-adoptantes">
-          <!-- Filas dinámicas -->
-        </tbody>
-      </table>
-    </div>
-  </section>
+        <p class="mb-2"><strong>Nombre:</strong> <span class="text-dark">{{ mascotaSeleccionada.nombre }}</span></p>
+        <p class="mb-2"><strong>Edad:</strong> <span class="text-dark">{{ mascotaSeleccionada.edad }} años</span></p>
+        <p class="mb-2"><strong>Raza:</strong> <span class="text-dark">{{ mascotaSeleccionada.raza }}</span></p>
+        <p class="mb-2"><strong>Tamaño:</strong> <span class="text-dark">{{ mascotaSeleccionada.tamano }}</span></p>
+        <p><strong>Descripción:</strong> <span class="text-dark">{{ mascotaSeleccionada.descripcion }}</span></p>
+      </div>
 
-  <!-- Solicitudes -->
-  <section class="container py-5" id="solicitudes">
-    <h2 class="text-center mb-4">Solicitudes de Adopción</h2>
-    <div class="table-responsive">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>Adoptante</th>
-            <th>Mascota</th>
-            <th>Fecha</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody id="tabla-solicitudes">
-          <!-- Filas dinámicas -->
-        </tbody>
-      </table>
+      <div *ngIf="mascotaSeleccionada?.img"
+        class="img-centro"
+        [ngStyle]="{ 'background-image': 'url(' + mascotaSeleccionada.img + ')' }">
+      </div>
+      <button class="caja-fiabilidad bg-warning shadow btn bg-warning text-dark fw-semibold px-4 py-2 mt-3 shadow-lg border-0" *ngIf="mascotaSeleccionada" (click)="adoptar(mascotaSeleccionada)">Adopta Ya!</button>
     </div>
   </section>
 
@@ -110,5 +99,5 @@
   <script src="app.js"></script>
 </body>
 </html>
-<router-outlet></router-outlet>
+
 

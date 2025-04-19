@@ -1,0 +1,66 @@
+<div class="container py-5">
+  <h4 class="text-center mb-4">Formulario de Solicitud de Adopción</h4>
+
+  <div class="card shadow-sm border-0 p-4">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="nombre" class="form-label fw-bold">Nombre completo</label>
+        <input type="text" class="form-control" id="nombre" [(ngModel)]="nombre" readonly>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="email" class="form-label fw-bold">Correo electrónico</label>
+        <input type="email" class="form-control" id="email" [(ngModel)]="email" readonly>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="telefono" class="form-label fw-bold">Teléfono</label>
+        <input type="text" class="form-control" id="telefono" [(ngModel)]="telefono" readonly>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="tipo" class="form-label fw-bold">Tipo</label>
+        <input type="text" class="form-control" id="tipo" [(ngModel)]="tipo" readonly>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="direccion" class="form-label fw-bold">Dirección</label>
+      <textarea class="form-control" id="direccion" rows="2" [(ngModel)]="direccion" readonly></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="motivo" class="form-label fw-bold">¿Por qué desea adoptar?</label>
+      <textarea class="form-control" id="motivo" rows="3" [(ngModel)]="motivo" readonly></textarea>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3" hidden>
+        <label for="animalID" class="form-label fw-bold">ID del animal</label>
+        <input type="number" class="form-control" id="animalID" [(ngModel)]="animalID">
+      </div>
+      <div class="col-md-6 mb-3" hidden>
+        <label for="usuarioID" class="form-label fw-bold">ID del Usuario</label>
+        <input type="number" class="form-control" id="usuarioID" [(ngModel)]="usuarioID">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="nombreMascota" class="form-label fw-bold">Nombre de la Mascota</label>
+        <input type="text" class="form-control" id="nombreMascota" [(ngModel)]="nombreMascota" readonly>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="especie" class="form-label fw-bold">Especie</label>
+        <input type="text" class="form-control" id="especie" [(ngModel)]="especie" readonly>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary px-5 py-2" (click)="cerrar()">Cerrar</button>
+    </div>
+  </div>
+</div>

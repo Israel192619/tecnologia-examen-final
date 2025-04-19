@@ -1,0 +1,64 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Editar Mascota</h2>
+
+  <form [formGroup]="formAdopcion" (ngSubmit)="onSubmit()" novalidate>
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label for="nombre" class="form-label fw-bold">Nombre</label>
+        <input type="text" class="form-control" [(ngModel)]="nombre" id="nombre" formControlName="nombre" required>
+      </div>
+
+      <div class="col-md-6">
+        <label for="especie" class="form-label fw-bold">Especie</label>
+        <select class="form-select" [(ngModel)]="especie" id="especie" formControlName="especie">
+          <option value="">Seleccionar especie</option>
+          <option value="Perro">Perro</option>
+          <option value="Gato">Gato</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </div>
+
+      <div class="col-md-6">
+        <label for="raza" class="form-label fw-bold">Raza</label>
+        <input type="text" class="form-control" [(ngModel)]="raza" id="raza" formControlName="raza">
+      </div>
+
+      <div class="col-md-6">
+        <label for="edad" class="form-label fw-bold">Edad (en años)</label>
+        <input type="number" class="form-control" [(ngModel)]="edad" id="edad" formControlName="edad" min="0">
+      </div>
+
+      <div class="col-md-6">
+        <label for="tamano" class="form-label fw-bold">Tamaño</label>
+        <select class="form-select" [(ngModel)]="tamano" id="tamano" formControlName="tamano">
+          <option value="">Seleccionar tamaño</option>
+          <option value="Pequeño">Pequeño</option>
+          <option value="Mediano">Mediano</option>
+          <option value="Grande">Grande</option>
+        </select>
+      </div>
+
+      <div class="col-md-12">
+        <label for="descripcion" class="form-label fw-bold">Descripción</label>
+        <textarea class="form-control" [(ngModel)]="descripcion" id="descripcion" rows="3" formControlName="descripcion"></textarea>
+      </div>
+
+      <div class="col-md-12 d-flex align-items-center gap-3">
+        <label class="btn btn-outline-secondary btn-sm" data-bs-toggle="tooltip" title="Cambiar imagen">
+          <i class="bi bi-pencil-fill"></i> Cambiar Imagen
+          <input type="file" id="img" (change)="processAvatar($event)" name="avatar" accept=".png, .jpg, .jpeg" hidden />
+        </label>
+
+        <div class="card shadow" style="width: 100px; height: 100px; background-size: cover; background-position: center;"
+             [ngStyle]="{
+               'background-image': 'url(' + IMAGEN_PREVISUALIZACION + ')'
+             }">
+        </div>
+      </div>
+
+      <div class="col-12 text-center mt-4">
+        <button type="submit" class="btn btn-primary px-5 mb-4" [disabled]="formAdopcion.invalid">Actualizar</button>
+      </div>
+    </div>
+  </form>
+</div>
