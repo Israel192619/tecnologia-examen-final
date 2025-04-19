@@ -41,16 +41,18 @@ export class MascotaShowComponent {
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    this.id = this.mascota.id;
-    this.nombre = this.mascota.nombre;
-    this.especie = this.mascota.especie;
-    this.raza = this.mascota.raza;
-    this.edad = this.mascota.edad;
-    this.tamano = this.mascota.tamano;
-    this.descripcion = this.mascota.descripcion;
-    this.img = this.mascota.img;
-    this.IMAGEN_PREVISUALIZACION = this.mascota.img;
+    this.id = this.mascota.mascota.id;
+    this.nombre = this.mascota.mascota.nombre;
+    this.especie = this.mascota.mascota.especie;
+    this.raza = this.mascota.mascota.raza;
+    this.edad = this.mascota.mascota.edad;
+    this.tamano = this.mascota.mascota.tamano;
+    this.descripcion = this.mascota.mascota.descripcion;
+    this.img = this.mascota.mascota.img;
+    this.IMAGEN_PREVISUALIZACION = this.mascota.mascota.img;
     this.formAdopcion.get('id')?.setValue(this.id);
+    //console.log(this.mascota,'esta');
+
   }
   onSubmit() {
       this.modal.close();

@@ -18,8 +18,8 @@ export class MascotaDeleteComponent {
 
   }
   ngOnInit(): void {
-    this.nombreElemento = this.mascota.nombre;
-    this.id = this.mascota.id;
+    this.nombreElemento = this.mascota.mascota.nombre;
+    this.id = this.mascota.mascota.id;
   }
 
   eliminar() {

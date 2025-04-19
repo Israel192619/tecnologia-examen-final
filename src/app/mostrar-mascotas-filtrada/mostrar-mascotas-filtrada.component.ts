@@ -33,6 +33,7 @@ export class MostrarMascotasFiltradaComponent {
  obtenerMascotas() {
   this.indexdb.obtenerMascotasPorEspecie(this.categoria).then(mascotas => {
     this.listaMascotasFiltradas = mascotas;
+    
     this.mensajeSinMascotas = mascotas.length === 0;
   }).catch(error => {
     console.error('Error al obtener mascotas:', error);
